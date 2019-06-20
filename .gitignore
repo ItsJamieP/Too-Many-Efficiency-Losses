@@ -20,7 +20,7 @@
 *.rar
 
 # Custom
-.gradle/
+.gradle/**
 build/
 run/
 
