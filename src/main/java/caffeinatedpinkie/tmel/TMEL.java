@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  */
 @Mod(modid = TMEL.MODID, version = TMEL.VERSION, useMetadata = true, acceptableRemoteVersions = "*")
 public class TMEL {
-    public static final String MODID = "tmel", VERSION = "1.12.2-1.4.0.0-beta2";
+    public static final String MODID = "tmel", VERSION = "1.12.2-1.4.0.0-beta3";
 
     /**
      * The main {@link FMLPostInitializationEvent} handler.

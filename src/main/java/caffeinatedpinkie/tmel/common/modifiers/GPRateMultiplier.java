@@ -7,6 +7,7 @@ import com.rwtema.extrautils2.power.IWorldPowerMultiplier;
 
 import caffeinatedpinkie.tmel.ConfigTMEL;
 import caffeinatedpinkie.tmel.GeneratorHelper;
+import caffeinatedpinkie.tmel.LoggerTMEL;
 import caffeinatedpinkie.tmel.common.IWPMWrapper;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
@@ -41,7 +42,12 @@ public class GPRateMultiplier extends ValueModifier {
      */
     @Override
     public void setValues() {
-	ConfigTMEL.gpRateMultipliers.forEach((generatorName,
-		rateMultiplier) -> IWPMWrapper.proxyMap.get(generatorName).rateMultiplier = rateMultiplier);
+	ConfigTMEL.gpRateMultipliers.forEach((generatorName, rateMultiplier) -> {
+	    try {
+		IWPMWrapper.proxyMap.get(generatorName).rateMultiplier = rateMultiplier;
+	    } catch (NullPointerException e) {
+		LoggerTMEL.warn("Unable to set the GP rate multiplier for " + generatorName + '.', e);
+	    }
+	});
     }
 }
